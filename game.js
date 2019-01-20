@@ -26,6 +26,12 @@ function drawEverything() {
     paddle.draw();
     ball.draw();
     //console.log(paddleX);
+
+    // Logo
+    canvasContext.font = "30px Arial";
+    canvasContext.strokeStyle = 'lime';
+    canvasContext.textAlign = 'center';
+    canvasContext.strokeText("BRICKBREAKER", canvas.width/2, 30);
 }
 
 function moveEverything() {
