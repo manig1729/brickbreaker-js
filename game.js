@@ -6,7 +6,7 @@ window.onload = function(){
 
     setup();
 
-    framesPerSecond = 30;
+    framesPerSecond = 60;
     setInterval(function(){
         if(isPlaying) {
             drawEverything();
@@ -26,7 +26,7 @@ function drawEverything() {
 }
 
 function moveEverything() {
-
+    console.log("hi");
 }
 
 function colorRect(x, y, width, height, color) {
@@ -44,10 +44,14 @@ function colorCircle(x, y, radius, height, color) {
 function keyPush(key) {
     switch(key.keyCode) {
         case 37 : //Left
-
+            if(paddleX > 0){
+            paddleX -= paddleVel;
+            }
             break;
         case 39 : //Right
-
+            if(paddleX < canvas.width - paddleWidth){
+            paddleX += paddleVel;
+            }
             break;
         case 27 : //Escape
             if(isPlaying){
