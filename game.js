@@ -1,10 +1,10 @@
 
-var isPlaying = true;
-
 window.onload = function(){
     canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
     document.addEventListener('keydown', keyPush);
+
+    setup();
 
     framesPerSecond = 30;
     setInterval(function(){
@@ -15,9 +15,14 @@ window.onload = function(){
     }, 1000/framesPerSecond);
 }
 
+function setup() {
+    paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, 'lightblue');
+}
+
 function drawEverything() {
     // Drawing the background
     colorRect(0, 0, canvas.width, canvas.height, 'black');
+    paddle.draw();
 }
 
 function moveEverything() {
