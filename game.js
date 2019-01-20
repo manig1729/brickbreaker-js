@@ -12,6 +12,12 @@ window.onload = function(){
             drawEverything();
             moveEverything();
         }
+        else if(isPlaying == false) {
+            canvasContext.font = "15px arial";
+            canvasContext.fillStyle = 'lime';
+            canvasContext.textAlign = 'left';
+            canvasContext.fillText(">>> GAME PAUSED", 10, 300);            
+        }
     }, 1000/framesPerSecond);
 }
 
@@ -28,10 +34,11 @@ function drawEverything() {
     //console.log(paddleX);
 
     // Logo
-    canvasContext.font = "30px Arial";
+    canvasContext.font = "32px arial";
     canvasContext.strokeStyle = 'lime';
     canvasContext.textAlign = 'center';
     canvasContext.strokeText("BRICKBREAKER", canvas.width/2, 30);
+
 }
 
 function moveEverything() {
