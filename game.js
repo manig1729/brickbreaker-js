@@ -16,7 +16,7 @@ window.onload = function(){
 }
 
 function setup() {
-    paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, 'lightblue');
+    paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, 'lawngreen');
     ball = new Ball();
 }
 
@@ -25,7 +25,7 @@ function drawEverything() {
     colorRect(0, 0, canvas.width, canvas.height, 'black');
     paddle.draw();
     ball.draw();
-    console.log(paddleX);
+    //console.log(paddleX);
 }
 
 function moveEverything() {
@@ -37,6 +37,8 @@ function moveEverything() {
 function colorRect(x, y, width, height, color) {
     canvasContext.fillStyle = color;
     canvasContext.fillRect(x, y, width, height);
+    canvasContext.fillStyle = 'black';
+    canvasContext.fillRect(x+2, y+2, width - 4, height - 4);
 }
 
 function colorCircle(x, y, radius, color) {
@@ -44,17 +46,22 @@ function colorCircle(x, y, radius, color) {
     canvasContext.beginPath();
     canvasContext.arc(x, y, radius, 0, Math.PI*2, true);
     canvasContext.fill();
+
+    canvasContext.fillStyle = 'black';
+    canvasContext.beginPath();
+    canvasContext.arc(x, y, radius-2, 0, Math.PI*2, true);
+    canvasContext.fill();
 }
 
 function keyPush(key) {
     switch(key.keyCode) {
         case 37 : //Left
-            if(paddleX > 0){
+            if(paddleX > 2){
             paddleX -= paddleVel;
             }
             break;
         case 39 : //Right
-            if(paddleX < canvas.width - paddleWidth){
+            if(paddleX < canvas.width - paddleWidth - 2){
             paddleX += paddleVel;
             }
             break;

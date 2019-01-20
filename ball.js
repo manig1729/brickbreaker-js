@@ -9,7 +9,7 @@ class Ball {
     }
 
     draw() {
-        colorCircle(this.x, this.y, this.r, 'pink');
+        colorCircle(this.x, this.y, this.r, 'yellow');
     }
 
     move() {
