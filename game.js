@@ -6,7 +6,7 @@ window.onload = function(){
 
     setup();
 
-    framesPerSecond = 60;
+    framesPerSecond = 30;
     setInterval(function(){
         if(isPlaying) {
             drawEverything();
@@ -17,16 +17,23 @@ window.onload = function(){
 
 function setup() {
     paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, 'lightblue');
+    ball = new Ball();
 }
 
 function drawEverything() {
     // Drawing the background
     colorRect(0, 0, canvas.width, canvas.height, 'black');
     paddle.draw();
+    ball.draw();
 }
 
 function moveEverything() {
-    console.log("hi");
+    //console.log("hi");
+    ball.move();
+}
+
+function checkCollision() {
+    
 }
 
 function colorRect(x, y, width, height, color) {
@@ -34,7 +41,7 @@ function colorRect(x, y, width, height, color) {
     canvasContext.fillRect(x, y, width, height);
 }
 
-function colorCircle(x, y, radius, height, color) {
+function colorCircle(x, y, radius, color) {
     canvasContext.fillStyle = color;
     canvasContext.beginPath();
     canvasContext.arc(x, y, radius, 0, Math.PI*2, true);
