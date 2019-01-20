@@ -22,7 +22,7 @@ window.onload = function(){
 }
 
 function setup() {
-    paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, 'lawngreen');
+    paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, 'lime'); //changed from lawn green
     ball = new Ball();
 }
 
