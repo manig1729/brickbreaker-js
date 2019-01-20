@@ -25,15 +25,13 @@ function drawEverything() {
     colorRect(0, 0, canvas.width, canvas.height, 'black');
     paddle.draw();
     ball.draw();
+    console.log(paddleX);
 }
 
 function moveEverything() {
     //console.log("hi");
     ball.move();
-}
-
-function checkCollision() {
-    
+    ball.checkCollision();
 }
 
 function colorRect(x, y, width, height, color) {

@@ -9,6 +9,6 @@ class Paddle {
     }
 
     draw(){
-        colorRect(paddleX, this.y, this.width, this.height, this.color);
+        colorRect(paddleX, paddleY, paddleWidth, paddleHeight, this.color);
     }
 }

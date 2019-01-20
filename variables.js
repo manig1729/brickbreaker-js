@@ -13,5 +13,5 @@ var paddleVel = 8;
 var ballX = 300;
 var ballY = 200;
 var ballRadius = 10;
-var ballVelX = 5;
-var ballVelY = 5;
+var ballVelX = 3;
+var ballVelY = 3;
