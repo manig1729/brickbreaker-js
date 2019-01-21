@@ -7,7 +7,7 @@ class Paddle {
         this.width = width;
         this.height = height;
         this.color = color;
-        this.thickness = 3;
+        this.thickness = 2;
     }
 
     draw(){

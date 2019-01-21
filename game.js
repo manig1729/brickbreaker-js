@@ -24,6 +24,20 @@ window.onload = function(){
 function setup() {
     paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, 'lime'); //changed from lawn green
     ball = new Ball();
+    
+    // Making the bricks
+    var i;
+    for(i=0; i<=2; i++){
+        bricksArray[i] = [];
+    }
+
+    for(i = 0; i<=2; i++){
+        for(var j = 0; j <= 3; j++) {
+            var brickX = 40 + j*(100 + 40);
+            var brickY = 60 + i*(10 + 40);
+            bricksArray[i][j] = new Brick(brickX, brickY);
+        }
+    }
 }
 
 function drawEverything() {
@@ -40,7 +54,14 @@ function drawEverything() {
     canvasContext.font = "32px arial";
     canvasContext.strokeStyle = 'lime';
     canvasContext.textAlign = 'center';
-    canvasContext.strokeText("BRICKBREAKER", canvas.width/2, 60);
+    canvasContext.strokeText("BRICKBREAKER", canvas.width/2, 30);
+
+    for(var i = 0; i<=2; i++){
+        for(var j = 0; j <= 3; j++) {
+            bricksArray[i][j].draw();
+        }
+    }
+    //console.log(bricksArray[1][1]);
 
 }
 
