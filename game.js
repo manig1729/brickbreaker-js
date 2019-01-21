@@ -16,7 +16,7 @@ window.onload = function(){
             canvasContext.font = "15px arial";
             canvasContext.fillStyle = 'lime';
             canvasContext.textAlign = 'left';
-            canvasContext.fillText(">>> GAME PAUSED", 10, 300);            
+            canvasContext.fillText(">>> GAME PAUSED", 10, 300);
         }
     }, 1000/framesPerSecond);
 }
@@ -33,11 +33,14 @@ function drawEverything() {
     ball.draw();
     //console.log(paddleX);
 
+    //Border
+    //hollowRect(0, 0, canvas.width, canvas.height, 'lime', 10);
+
     // Logo
     canvasContext.font = "32px arial";
     canvasContext.strokeStyle = 'lime';
     canvasContext.textAlign = 'center';
-    canvasContext.strokeText("BRICKBREAKER", canvas.width/2, 30);
+    canvasContext.strokeText("BRICKBREAKER", canvas.width/2, 60);
 
 }
 
@@ -47,44 +50,33 @@ function moveEverything() {
     ball.checkCollision();
 }
 
+function hollowRect(x, y, width, height, color, thickness){
+  canvasContext.lineWidth = thickness;
+  canvasContext.strokeStyle = color;
+  canvasContext.strokeRect(x, y, width, height);
+}
+
 function colorRect(x, y, width, height, color) {
     canvasContext.fillStyle = color;
     canvasContext.fillRect(x, y, width, height);
-    canvasContext.fillStyle = 'black';
-    canvasContext.fillRect(x+2, y+2, width - 4, height - 4);
+    // canvasContext.fillStyle = 'black';
+    // canvasContext.fillRect(x+2, y+2, width - 4, height - 4);
 }
 
 function colorCircle(x, y, radius, color) {
-    canvasContext.fillStyle = color;
+    canvasContext.strokeStyle = color;
+    canvasContext.lineWidth = 1.5;
     canvasContext.beginPath();
     canvasContext.arc(x, y, radius, 0, Math.PI*2, true);
-    canvasContext.fill();
+    canvasContext.stroke();
+    //canvasContext.fill();
 
-    canvasContext.fillStyle = 'black';
-    canvasContext.beginPath();
-    canvasContext.arc(x, y, radius-2, 0, Math.PI*2, true);
-    canvasContext.fill();
+    // canvasContext.fillStyle = 'black';
+    // canvasContext.beginPath();
+    // canvasContext.arc(x, y, radius-2, 0, Math.PI*2, true);
+    // canvasContext.fill();
 }
 
 function keyPush(key) {
-    switch(key.keyCode) {
-        case 37 : //Left
-            if(paddleX > 2){
-            paddleX -= paddleVel;
-            }
-            break;
-        case 39 : //Right
-            if(paddleX < canvas.width - paddleWidth - 2){
-            paddleX += paddleVel;
-            }
-            break;
-        case 27 : //Escape
-            if(isPlaying){
-                isPlaying = false;
-            }
-            else if(isPlaying == false){
-                isPlaying = true;
-            }
-            break;
-    }
+  paddle.update(key.keyCode);
 }

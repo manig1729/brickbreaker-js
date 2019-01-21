@@ -9,34 +9,34 @@ class Ball {
     }
 
     draw() {
-        colorCircle(this.x, this.y, this.r, 'yellow');
+        colorCircle(this.x, this.y, this.r, 'lime');
     }
 
     move() {
-        this.x += ballVelX;
-        this.y += ballVelY;
+        this.x += this.velX;
+        this.y += this.velY;
     }
 
     checkCollision() {
      // Ball with bottom
     if(this.y >= canvas.height - 20){
-        if(this.x >= paddleX && this.x <= (paddleX + paddleWidth)){
-            if(ballVelY > 0)
-            ballVelY = -ballVelY;
+        if(this.x >= paddle.x && this.x <= (paddle.x + paddle.width)){
+            if(this.velY > 0)
+            this.velY = -this.velY
         }
-    }    
+    }
     // Ball with top
     if(this.y < 10){
-        if(ballVelY < 0)
-        ballVelY = -ballVelY;
+        if(this.velY < 0)
+        this.velY = -this.velY;
         }
 
     // Ball with right
-    if(this.x >= 590 && ballVelX > 0)
-        ballVelX = -ballVelX;
-    
+    if(this.x >= 590 && this.velX > 0)
+        this.velX = -this.velX;
+
     // Ball with left
-    if(this.x <= 10 && ballVelX < 0)
-        ballVelX = -ballVelX;
+    if(this.x <= 10 && this.velX < 0)
+        this.velX = -this.velX;
     }
 }
