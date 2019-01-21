@@ -58,6 +58,7 @@ function drawEverything() {
 
     for(var i = 0; i<=2; i++){
         for(var j = 0; j <= 3; j++) {
+            if(bricksArray[i][j].isThere)
             bricksArray[i][j].draw();
         }
     }
@@ -69,6 +70,11 @@ function moveEverything() {
     //console.log("hi");
     ball.move();
     ball.checkCollision();
+    for(var i = 0; i<=2; i++){
+        for(var j = 0; j <= 3; j++) {
+            bricksArray[i][j].checkBallCollision();
+        }
+    }
 }
 
 function hollowRect(x, y, width, height, color, thickness){
