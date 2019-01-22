@@ -72,6 +72,19 @@ function moveEverything() {
             bricksArray[i][j].checkBallCollision();
         }
     }
+
+    var score = 0;
+    for(var i = 0; i<=2; i++){
+        for(var j = 0; j <= 3; j++) {
+            if(bricksArray[i][j].isThere)
+            score = 1;
+        }
+    }
+    if(score == 0){
+        drawEverything();
+        showEndScreen();
+    }
+
 }
 
 function showEndScreen() {
