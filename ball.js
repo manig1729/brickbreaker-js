@@ -19,31 +19,12 @@ class Ball {
 
     checkCollision() {
      // Ball with bottom
+     // TODO - change this stupid stuff with a linear function.
+    var xTemp = this.x - paddle.x;
     if(this.y >= canvas.height - 20 && this.y <= canvas.height+2){
-        if(this.x >= paddle.x && this.x <= (paddle.x + 20)){
-            if(this.velY > 0)
+        if(this.x >= paddle.x && this.x <= (paddle.x + paddleWidth)){
+            this.velX = 3*(xTemp - 50)/25.0;
             this.velY = -this.velY;
-            this.velX = -6;
-        }
-        else if(this.x > paddle.x+20 && this.x <= (paddle.x + 40)){
-            if(this.velY > 0)
-            this.velY = -this.velY
-            this.velX = -4;
-        }
-        else if(this.x > paddle.x+40 && this.x <= (paddle.x + 60)){
-            if(this.velY > 0)
-            this.velY = -this.velY;
-            this.velX = 0;
-        }
-        else if(this.x > paddle.x+60 && this.x <= (paddle.x + 80)){
-            if(this.velY > 0)
-            this.velY = -this.velY;
-            this.velX = 4;
-        }
-        else if(this.x > 80 && this.x <= (paddle.x + paddle.width)){
-            if(this.velY > 0)
-            this.velY = -this.velY;
-            this.velX = 6;
         }
     }
     // Ball with top
