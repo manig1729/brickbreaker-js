@@ -2,6 +2,7 @@
 // Game
 var isPlaying = true;
 var checkGameOver = true;
+var tempPauseChecker = true;
 
 // Paddle
 var paddleX = 250;

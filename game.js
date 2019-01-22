@@ -13,10 +13,7 @@ window.onload = function(){
             moveEverything();
         }
         else if(isPlaying == false) {
-            canvasContext.font = "15px arial";
-            canvasContext.fillStyle = 'lime';
-            canvasContext.textAlign = 'left';
-            canvasContext.fillText(">>> GAME PAUSED", 10, 300);
+            showPauseScreen();
         }
     }, 1000/framesPerSecond);
 }
@@ -83,6 +80,16 @@ function showEndScreen() {
     canvasContext.fillStyle = 'lime';
     canvasContext.textAlign = 'left';
     canvasContext.fillText(">>> GAME OVER", 10, 300);
+}
+
+function showPauseScreen() {
+    if(tempPauseChecker) {
+        canvasContext.font = "15px arial bold";
+        canvasContext.fillStyle = 'lime';
+        canvasContext.textAlign = 'left';
+        canvasContext.fillText(">>> GAME PAUSED", 10, 300);
+        tempPauseChecker = false;
+    }
 }
 
 function hollowRect(x, y, width, height, color, thickness){

@@ -30,10 +30,12 @@ class Paddle {
                 if(isPlaying){
                     isPlaying = false;
                     checkGameOver = false;
+                    tempPauseChecker = true;
                 }
                 else if(isPlaying == false){
                     isPlaying = true;
                     checkGameOver = true;
+                    tempPauseChecker = true;
                 }
                 break;
         }
