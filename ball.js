@@ -38,5 +38,8 @@ class Ball {
     // Ball with left
     if(this.x <= 10 && this.velX < 0)
         this.velX = -this.velX;
+
+    if(this.y - this.r - 10 > canvas.height)
+        showEndScreen();
     }
 }

@@ -29,9 +29,11 @@ class Paddle {
             case 27 : //Escape
                 if(isPlaying){
                     isPlaying = false;
+                    checkGameOver = false;
                 }
                 else if(isPlaying == false){
                     isPlaying = true;
+                    checkGameOver = true;
                 }
                 break;
         }

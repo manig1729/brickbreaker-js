@@ -8,7 +8,7 @@ window.onload = function(){
 
     framesPerSecond = 30;
     setInterval(function(){
-        if(isPlaying) {
+        if(isPlaying && checkGameOver) {
             drawEverything();
             moveEverything();
         }
@@ -75,6 +75,14 @@ function moveEverything() {
             bricksArray[i][j].checkBallCollision();
         }
     }
+}
+
+function showEndScreen() {
+    checkGameOver = false;
+    canvasContext.font = "15px arial bold";
+    canvasContext.fillStyle = 'lime';
+    canvasContext.textAlign = 'left';
+    canvasContext.fillText(">>> GAME OVER", 10, 300);
 }
 
 function hollowRect(x, y, width, height, color, thickness){

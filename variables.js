@@ -1,6 +1,7 @@
 
 // Game
 var isPlaying = true;
+var checkGameOver = true;
 
 // Paddle
 var paddleX = 250;
