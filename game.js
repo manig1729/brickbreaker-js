@@ -2,9 +2,16 @@
 window.onload = function(){
     canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
-    document.addEventListener('keydown', keyPush);
-
     setup();
+
+    document.addEventListener('keydown', keyPush);
+    canvas.addEventListener('mousemove',
+    function(evt) {
+        var mousePos = calculateMousePos(evt);
+        paddle.x = mousePos.x - paddle.width/2;
+    });
+
+    
 
     framesPerSecond = 30;
     setInterval(function(){
@@ -134,4 +141,15 @@ function colorCircle(x, y, radius, color) {
 
 function keyPush(key) {
   paddle.update(key.keyCode);
+}
+
+function calculateMousePos(evt) {
+    var rect = canvas.getBoundingClientRect();
+    var root = document.documentElement;
+    var mouseX = evt.clientX - rect.left - root.scrollLeft;
+    var mouseY = evt.clientY - rect.top - root.scrollTop;
+    return {
+        x:mouseX,
+        y:mouseY
+    };
 }
