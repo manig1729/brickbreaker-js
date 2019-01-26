@@ -15,8 +15,8 @@ var paddleVel = 8;
 var ballX = 300;
 var ballY = 200;
 var ballRadius = 10;
-var ballVelX = 4;
-var ballVelY = 4
+var ballVelX = 2.5;
+var ballVelY = 2.5;
 
 // Bricks
 var brickHeight = 10;

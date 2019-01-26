@@ -23,6 +23,7 @@ class Ball {
     var xTemp = this.x - paddle.x;
     if(this.y >= canvas.height - 20 && this.y <= canvas.height+2){
         if(this.x >= paddle.x && this.x <= (paddle.x + paddleWidth)){
+            this.velY = 4;
             this.velX = 3*(xTemp - 50)/25.0;
             this.velY = -this.velY;
         }
