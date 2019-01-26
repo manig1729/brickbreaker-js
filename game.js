@@ -2,9 +2,34 @@
 window.onload = function(){
     canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
-    document.addEventListener('keydown', keyPush);
-
     setup();
+
+    document.addEventListener('keydown', keyPush);
+    canvas.addEventListener('mousemove',
+    function(evt) {
+        var mousePos = calculateMousePos(evt);
+        paddle.x = mousePos.x - paddle.width/2;
+    });
+
+    var startX = 0;
+    var touchDist = 0;
+    canvas.addEventListener('touchstart', function(evt){
+        var touchObj = evt.changedTouches[0];
+        startX = parseInt(touchObj.clientX);
+        paddle.x = startX - paddle.width/2;
+        evt.preventDefault();
+    }, false);
+    canvas.addEventListener('touchmove', function(evt){
+        var touchObj = evt.changedTouches[0];// reference first touch point for this event
+        var dist = parseInt(touchObj.clientX);
+        paddle.x = dist - paddle.width/2;
+        evt.preventDefault();   
+    }, false);
+    canvas.addEventListener('touchend', function(evt){
+        var touchObj = evt.changedTouches[0];
+        paddle.x = touchObj.clientX;
+        evt.preventDefault()
+    }, false);
 
     framesPerSecond = 30;
     setInterval(function(){
@@ -134,4 +159,15 @@ function colorCircle(x, y, radius, color) {
 
 function keyPush(key) {
   paddle.update(key.keyCode);
+}
+
+function calculateMousePos(evt) {
+    var rect = canvas.getBoundingClientRect();
+    var root = document.documentElement;
+    var mouseX = evt.clientX - rect.left - root.scrollLeft;
+    var mouseY = evt.clientY - rect.top - root.scrollTop;
+    return {
+        x:mouseX,
+        y:mouseY
+    };
 }
