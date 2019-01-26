@@ -11,7 +11,25 @@ window.onload = function(){
         paddle.x = mousePos.x - paddle.width/2;
     });
 
-    
+    var startX = 0;
+    var touchDist = 0;
+    canvas.addEventListener('touchstart', function(evt){
+        var touchObj = evt.changedTouches[0];
+        startX = parseInt(touchObj.clientX);
+        paddle.x = startX - paddle.width/2;
+        evt.preventDefault();
+    }, false);
+    canvas.addEventListener('touchmove', function(evt){
+        var touchObj = evt.changedTouches[0];// reference first touch point for this event
+        var dist = parseInt(touchObj.clientX);
+        paddle.x = dist - paddle.width/2;
+        evt.preventDefault();   
+    }, false);
+    canvas.addEventListener('touchend', function(evt){
+        var touchObj = evt.changedTouches[0];
+        paddle.x = touchObj.clientX;
+        evt.preventDefault()
+    }, false);
 
     framesPerSecond = 30;
     setInterval(function(){
