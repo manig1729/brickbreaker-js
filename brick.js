@@ -28,7 +28,7 @@ class Brick {
             }
         }
 
-        if(ball.y + ball.r > this.y && ball.y - ball.r < (this.y + this.height)){
+        else if(ball.y + ball.r > this.y && ball.y - ball.r < (this.y + this.height)){
             if(ball.x + ball.r >= this.x && (ball.x + ball.r <= this.x + this.width/10))  { // LEFT
                 if(ball.velX > 0){
                     ball.velX = -ball.velX;
