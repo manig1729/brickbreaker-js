@@ -23,7 +23,8 @@ window.onload = function(){
 }
 
 function setup() {
-    paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, 'lime');
+
+    paddle = new Paddle(canvas.width/2 - paddleWidth/2, canvas.height - paddleHeight, paddleWidth, paddleHeight, 'lime');
     ball = new Ball();
     
     // Making the bricks
@@ -32,10 +33,11 @@ function setup() {
         bricksArray[i] = [];
     }
 
+    var brickWidth = Math.floor(canvas.width/6);
     for(i = 0; i<=2; i++){
         for(var j = 0; j <= 3; j++) {
-            var brickX = 40 + j*(100 + 40);
-            var brickY = 60 + i*(10 + 40);
+            var brickX = Math.floor(canvas.width/15) + j*(brickWidth + Math.floor(canvas.width/15));
+            var brickY = 60 + i*(brickHeight + 40);
             bricksArray[i][j] = new Brick(brickX, brickY);
         }
     }

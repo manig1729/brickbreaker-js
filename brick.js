@@ -3,7 +3,7 @@ class Brick {
         this.x = x;
         this.y = y;
         this.height = brickHeight;
-        this.width = brickWidth;
+        this.width = Math.floor(canvas.width/6);
         this.isThere = true;
     }
 
