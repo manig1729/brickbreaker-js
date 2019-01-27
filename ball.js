@@ -9,7 +9,7 @@ class Ball {
     }
 
     draw() {
-        colorCircle(this.x, this.y, this.r, 'yellow'); //changed from lime - change back if you want
+        colorCircle(this.x, this.y, this.r, 'yellow');
     }
 
     move() {
@@ -19,7 +19,6 @@ class Ball {
 
     checkCollision() {
      // Ball with bottom
-     // TODO - change this stupid stuff with a linear function.
     var xTemp = this.x - paddle.x;
     if(this.y >= canvas.height - 20 && this.y <= canvas.height+2){
         if(this.x >= paddle.x && this.x <= (paddle.x + paddleWidth)){

@@ -46,10 +46,6 @@ function drawEverything() {
     colorRect(0, 0, canvas.width, canvas.height, 'black');
     paddle.draw();
     ball.draw();
-    //console.log(paddleX);
-
-    //Border
-    //hollowRect(0, 0, canvas.width, canvas.height, 'lime', 10);
 
     // Logo
     canvasContext.font = "32px arial";
@@ -63,12 +59,9 @@ function drawEverything() {
             bricksArray[i][j].draw();
         }
     }
-    //console.log(bricksArray[1][1]);
-
 }
 
 function moveEverything() {
-    //console.log("hi");
     ball.move();
     ball.checkCollision();
     for(var i = 0; i<=2; i++){
@@ -118,8 +111,6 @@ function hollowRect(x, y, width, height, color, thickness){
 function colorRect(x, y, width, height, color) {
     canvasContext.fillStyle = color;
     canvasContext.fillRect(x, y, width, height);
-    // canvasContext.fillStyle = 'black';
-    // canvasContext.fillRect(x+2, y+2, width - 4, height - 4);
 }
 
 function colorCircle(x, y, radius, color) {
@@ -128,12 +119,6 @@ function colorCircle(x, y, radius, color) {
     canvasContext.beginPath();
     canvasContext.arc(x, y, radius, 0, Math.PI*2, true);
     canvasContext.stroke();
-    //canvasContext.fill();
-
-    // canvasContext.fillStyle = 'black';
-    // canvasContext.beginPath();
-    // canvasContext.arc(x, y, radius-2, 0, Math.PI*2, true);
-    // canvasContext.fill();
 }
 
 function keyPush(key) {
