@@ -2,7 +2,13 @@
 window.onload = function(){
     canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
+    
+    if (window.innerHeight > 700)
+        canvas.height = 700;
+    else
+        canvas.height = window.innerHeight - 30;
 
+    canvas.width = window.innerWidth - 30;
     setup();
 
     document.addEventListener('keydown', keyPush);
