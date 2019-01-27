@@ -2,35 +2,14 @@
 window.onload = function(){
     canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
+
     setup();
 
     document.addEventListener('keydown', keyPush);
-    canvas.addEventListener('mousemove',
-    function(evt) {
-        var mousePos = calculateMousePos(evt);
-        paddle.x = mousePos.x - paddle.width/2;
-    });
 
-    var startX = 0;
-    var touchDist = 0;
-    canvas.addEventListener('touchstart', function(evt){
-        var touchObj = evt.changedTouches[0];
-        startX = parseInt(touchObj.clientX);
-        paddle.x = startX - paddle.width/2;
-        evt.preventDefault();
-    }, false);
-    canvas.addEventListener('touchmove', function(evt){
-        var touchObj = evt.changedTouches[0];// reference first touch point for this event
-        var dist = parseInt(touchObj.clientX);
-        paddle.x = dist - paddle.width/2;
-        evt.preventDefault();   
-    }, false);
-    canvas.addEventListener('touchend', function(evt){
-        var touchObj = evt.changedTouches[0];
-        paddle.x = touchObj.clientX;
-        evt.preventDefault()
-    }, false);
-
+    mouseInput();
+    touchInput();
+   
     framesPerSecond = 30;
     setInterval(function(){
         if(isPlaying && checkGameOver) {
@@ -44,7 +23,7 @@ window.onload = function(){
 }
 
 function setup() {
-    paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, 'lime'); //changed from lawn green
+    paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, 'lime');
     ball = new Ball();
     
     // Making the bricks
@@ -161,6 +140,28 @@ function keyPush(key) {
   paddle.update(key.keyCode);
 }
 
+function touchInput() {
+    var startX = 0;
+    var touchDist = 0;
+    canvas.addEventListener('touchstart', function(evt){
+        var touchObj = evt.changedTouches[0];
+        startX = parseInt(touchObj.clientX);
+        paddle.x = startX - paddle.width/2;
+        evt.preventDefault();
+    }, false);
+    canvas.addEventListener('touchmove', function(evt){
+        var touchObj = evt.changedTouches[0];// reference first touch point for this event
+        var dist = parseInt(touchObj.clientX);
+        paddle.x = dist - paddle.width/2;
+        evt.preventDefault();   
+    }, false);
+    canvas.addEventListener('touchend', function(evt){
+        var touchObj = evt.changedTouches[0];
+        paddle.x = touchObj.clientX;
+        evt.preventDefault()
+    }, false);
+}
+
 function calculateMousePos(evt) {
     var rect = canvas.getBoundingClientRect();
     var root = document.documentElement;
@@ -170,4 +171,12 @@ function calculateMousePos(evt) {
         x:mouseX,
         y:mouseY
     };
+}
+
+function mouseInput() {
+    canvas.addEventListener('mousemove',
+    function(evt) {
+        var mousePos = calculateMousePos(evt);
+        paddle.x = mousePos.x - paddle.width/2;
+    });
 }
