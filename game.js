@@ -8,7 +8,7 @@ window.onload = function(){
     else
         canvas.height = window.innerHeight - 30;
 
-    canvas.width = window.innerWidth - 30;
+    canvas.width = window.innerWidth - 20;
     setup();
 
     document.addEventListener('keydown', keyPush);
@@ -97,7 +97,7 @@ function showEndScreen() {
     canvasContext.font = "15px arial bold";
     canvasContext.fillStyle = 'lime';
     canvasContext.textAlign = 'left';
-    canvasContext.fillText(">>> GAME OVER", 10, 300);
+    canvasContext.fillText(">>> GAME OVER", 10, canvas.height/2);
 }
 
 function showPauseScreen() {
@@ -105,7 +105,7 @@ function showPauseScreen() {
         canvasContext.font = "15px arial bold";
         canvasContext.fillStyle = 'lime';
         canvasContext.textAlign = 'left';
-        canvasContext.fillText(">>> GAME PAUSED", 10, 300);
+        canvasContext.fillText(">>> GAME PAUSED", 10, canvas.height/2);
         tempPauseChecker = false;
     }
 }
