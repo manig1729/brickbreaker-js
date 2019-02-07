@@ -1,8 +1,8 @@
 
-window.onload = function(){
+window.onload = function () {
     canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
-    
+
     if (window.innerHeight > 700)
         canvas.height = 700;
     else
@@ -15,35 +15,35 @@ window.onload = function(){
 
     mouseInput();
     touchInput();
-   
+
     framesPerSecond = 30;
-    setInterval(function(){
-        if(isPlaying && checkGameOver) {
+    setInterval(function () {
+        if (isPlaying && checkGameOver) {
             drawEverything();
             moveEverything();
         }
-        else if(isPlaying == false) {
+        else if (isPlaying == false) {
             showPauseScreen();
         }
-    }, 1000/framesPerSecond);
+    }, 1000 / framesPerSecond);
 }
 
 function setup() {
 
-    paddle = new Paddle(canvas.width/2 - paddleWidth/2, canvas.height - paddleHeight, paddleWidth, paddleHeight, 'lime');
+    paddle = new Paddle(canvas.width / 2 - paddleWidth / 2, canvas.height - paddleHeight, paddleWidth, paddleHeight, 'lime');
     ball = new Ball();
-    
+
     // Making the bricks
     var i;
-    for(i=0; i<=2; i++){
+    for (i = 0; i <= 2; i++) {
         bricksArray[i] = [];
     }
 
-    var brickWidth = Math.floor(canvas.width/6);
-    for(i = 0; i<=2; i++){
-        for(var j = 0; j <= 3; j++) {
-            var brickX = Math.floor(canvas.width/15) + j*(brickWidth + Math.floor(canvas.width/15));
-            var brickY = 60 + i*(brickHeight + 40);
+    var brickWidth = Math.floor(canvas.width / 6);
+    for (i = 0; i <= 2; i++) {
+        for (var j = 0; j <= 3; j++) {
+            var brickX = Math.floor(canvas.width / 15) + j * (brickWidth + Math.floor(canvas.width / 15));
+            var brickY = 60 + i * (brickHeight + 40);
             bricksArray[i][j] = new Brick(brickX, brickY);
         }
     }
@@ -59,12 +59,12 @@ function drawEverything() {
     canvasContext.font = "32px arial";
     canvasContext.strokeStyle = 'lime';
     canvasContext.textAlign = 'center';
-    canvasContext.strokeText("BRICKBREAKER", canvas.width/2, 30);
+    canvasContext.strokeText("BRICKBREAKER", canvas.width / 2, 30);
 
-    for(var i = 0; i<=2; i++){
-        for(var j = 0; j <= 3; j++) {
-            if(bricksArray[i][j].isThere)
-            bricksArray[i][j].draw();
+    for (var i = 0; i <= 2; i++) {
+        for (var j = 0; j <= 3; j++) {
+            if (bricksArray[i][j].isThere)
+                bricksArray[i][j].draw();
         }
     }
 }
@@ -72,20 +72,20 @@ function drawEverything() {
 function moveEverything() {
     ball.move();
     ball.checkCollision();
-    for(var i = 0; i<=2; i++){
-        for(var j = 0; j <= 3; j++) {
+    for (var i = 0; i <= 2; i++) {
+        for (var j = 0; j <= 3; j++) {
             bricksArray[i][j].checkBallCollision();
         }
     }
 
     var score = 0;
-    for(var i = 0; i<=2; i++){
-        for(var j = 0; j <= 3; j++) {
-            if(bricksArray[i][j].isThere)
-            score = 1;
+    for (var i = 0; i <= 2; i++) {
+        for (var j = 0; j <= 3; j++) {
+            if (bricksArray[i][j].isThere)
+                score = 1;
         }
     }
-    if(score == 0){
+    if (score == 0) {
         drawEverything();
         showEndScreen();
     }
@@ -97,23 +97,23 @@ function showEndScreen() {
     canvasContext.font = "15px arial bold";
     canvasContext.fillStyle = 'lime';
     canvasContext.textAlign = 'left';
-    canvasContext.fillText(">>> GAME OVER", 10, canvas.height/2);
+    canvasContext.fillText(">>> GAME OVER", 10, canvas.height / 2);
 }
 
 function showPauseScreen() {
-    if(tempPauseChecker) {
+    if (tempPauseChecker) {
         canvasContext.font = "15px arial bold";
         canvasContext.fillStyle = 'lime';
         canvasContext.textAlign = 'left';
-        canvasContext.fillText(">>> GAME PAUSED", 10, canvas.height/2);
+        canvasContext.fillText(">>> GAME PAUSED", 10, canvas.height / 2);
         tempPauseChecker = false;
     }
 }
 
-function hollowRect(x, y, width, height, color, thickness){
-  canvasContext.lineWidth = thickness;
-  canvasContext.strokeStyle = color;
-  canvasContext.strokeRect(x, y, width, height);
+function hollowRect(x, y, width, height, color, thickness) {
+    canvasContext.lineWidth = thickness;
+    canvasContext.strokeStyle = color;
+    canvasContext.strokeRect(x, y, width, height);
 }
 
 function colorRect(x, y, width, height, color) {
@@ -125,30 +125,30 @@ function colorCircle(x, y, radius, color) {
     canvasContext.strokeStyle = color;
     canvasContext.lineWidth = 1.5;
     canvasContext.beginPath();
-    canvasContext.arc(x, y, radius, 0, Math.PI*2, true);
+    canvasContext.arc(x, y, radius, 0, Math.PI * 2, true);
     canvasContext.stroke();
 }
 
 function keyPush(key) {
-  paddle.update(key.keyCode);
+    paddle.update(key.keyCode);
 }
 
 function touchInput() {
     var startX = 0;
     var touchDist = 0;
-    canvas.addEventListener('touchstart', function(evt){
+    canvas.addEventListener('touchstart', function (evt) {
         var touchObj = evt.changedTouches[0];
         startX = parseInt(touchObj.clientX);
-        paddle.x = startX - paddle.width/2;
+        paddle.x = startX - paddle.width / 2;
         evt.preventDefault();
     }, false);
-    canvas.addEventListener('touchmove', function(evt){
+    canvas.addEventListener('touchmove', function (evt) {
         var touchObj = evt.changedTouches[0];// reference first touch point for this event
         var dist = parseInt(touchObj.clientX);
-        paddle.x = dist - paddle.width/2;
-        evt.preventDefault();   
+        paddle.x = dist - paddle.width / 2;
+        evt.preventDefault();
     }, false);
-    canvas.addEventListener('touchend', function(evt){
+    canvas.addEventListener('touchend', function (evt) {
         var touchObj = evt.changedTouches[0];
         paddle.x = touchObj.clientX;
         evt.preventDefault()
@@ -161,15 +161,15 @@ function calculateMousePos(evt) {
     var mouseX = evt.clientX - rect.left - root.scrollLeft;
     var mouseY = evt.clientY - rect.top - root.scrollTop;
     return {
-        x:mouseX,
-        y:mouseY
+        x: mouseX,
+        y: mouseY
     };
 }
 
 function mouseInput() {
     canvas.addEventListener('mousemove',
-    function(evt) {
-        var mousePos = calculateMousePos(evt);
-        paddle.x = mousePos.x - paddle.width/2;
-    });
+        function (evt) {
+            var mousePos = calculateMousePos(evt);
+            paddle.x = mousePos.x - paddle.width / 2;
+        });
 }

@@ -10,29 +10,29 @@ class Paddle {
         this.thickness = 2;
     }
 
-    draw(){
+    draw() {
         hollowRect(this.x, this.y, this.width, this.height, this.color, this.thickness);
     }
 
-    update(key){
-        switch(key) {
-            case 37 : //Left
-                if(this.x > 2){
-                this.x -= this.vel;
+    update(key) {
+        switch (key) {
+            case 37: //Left
+                if (this.x > 2) {
+                    this.x -= this.vel;
                 }
                 break;
-            case 39 : //Right
-                if(this.x < canvas.width - this.width - 2){
-                this.x += this.vel;
+            case 39: //Right
+                if (this.x < canvas.width - this.width - 2) {
+                    this.x += this.vel;
                 }
                 break;
-            case 27 : //Escape
-                if(isPlaying){
+            case 27: //Escape
+                if (isPlaying) {
                     isPlaying = false;
                     checkGameOver = false;
                     tempPauseChecker = true;
                 }
-                else if(isPlaying == false){
+                else if (isPlaying == false) {
                     isPlaying = true;
                     checkGameOver = true;
                     tempPauseChecker = true;

@@ -17,5 +17,5 @@ var ballVelY = 2.5;
 // Bricks
 var brickHeight = 10;
 var brickGap = 40;
-var bricksArray = []; 
+var bricksArray = [];
 
