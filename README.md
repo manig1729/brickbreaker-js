@@ -18,7 +18,7 @@ The code has been written in an Object - Oriented Programming style, using class
 I haven't used any form of Data structures except normal JavaScript arrays in the code yet, but do plan on using stacks in a later stage.
 
 ### Mobile Implementation
-The _Mobile version_ of the game is still in a rudimentary form and can be improved.
+This game can also be played on mobile devices!
 
 ### Contributing
 Do keep the following things in mind before sending pull requests.
