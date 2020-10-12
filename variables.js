@@ -3,7 +3,7 @@
 var isPlaying = true;
 var checkGameOver = true;
 var tempPauseChecker = true;
-
+var tempCreditChecker = true;
 // Paddle
 var paddleHeight = 10;
 var paddleWidth = 100;

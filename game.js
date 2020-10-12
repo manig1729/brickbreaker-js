@@ -110,6 +110,17 @@ function showPauseScreen() {
     }
 }
 
+//This function hasn't been called yet! Call it on a button press to display credits!
+function showCreditScreen() {
+    if (tempCreditChecker) {
+        canvasContext.font = "15px arial bold";
+        canvasContext.fillStyle = 'lime';
+        canvasContext.textAlign = 'left';
+        canvasContext.fillText("Credits: <your name here!>", 10, canvas.height / 2);
+        tempCreditChecker = false;
+    }
+}
+
 function hollowRect(x, y, width, height, color, thickness) {
     canvasContext.lineWidth = thickness;
     canvasContext.strokeStyle = color;
@@ -128,6 +139,9 @@ function colorCircle(x, y, radius, color) {
     canvasContext.arc(x, y, radius, 0, Math.PI * 2, true);
     canvasContext.stroke();
 }
+
+
+
 
 function keyPush(key) {
     paddle.update(key.keyCode);
