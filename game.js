@@ -16,7 +16,7 @@ window.onload = function () {
     mouseInput();
     touchInput();
 
-    framesPerSecond = 30;
+    framesPerSecond = 45;
     setInterval(function () {
         if (isPlaying && checkGameOver) {
             drawEverything();
@@ -24,6 +24,7 @@ window.onload = function () {
         }
         else if (isPlaying == false) {
             showPauseScreen();
+            showCreditScreen();
         }
     }, 1000 / framesPerSecond);
 }
@@ -116,7 +117,7 @@ function showCreditScreen() {
         canvasContext.font = "15px arial bold";
         canvasContext.fillStyle = 'lime';
         canvasContext.textAlign = 'left';
-        canvasContext.fillText("Credits: <your name here!>", 10, canvas.height / 2);
+        canvasContext.fillText(">>>CREDITS: <#OPENSOURCE!>", 10, canvas.height / 1.5);
         tempCreditChecker = false;
     }
 }
