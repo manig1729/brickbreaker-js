@@ -16,6 +16,20 @@ class Paddle {
 
     update(key) {
         switch (key) {
+
+            //--------------------This section is removable--------------------
+            case 38: //UP increase movement speed
+
+                this.vel+=10;
+                break;
+
+            case 40: //DOWN decrease movement speed
+                if(this.vel>20)
+                    this.vel-=10;
+                break;
+
+
+            //----------------------------------------------------------------
             case 37: //Left
                 if (this.x > 2) {
                     this.x -= this.vel;
@@ -35,6 +49,7 @@ class Paddle {
                 else if (isPlaying == false) {
                     isPlaying = true;
                     checkGameOver = true;
+                    tempCreditChecker=true;
                     tempPauseChecker = true;
                 }
                 break;
