@@ -1,3 +1,4 @@
+// the ball class for the brick breker game
 
 class Ball {
     constructor() {
