@@ -2,8 +2,8 @@
 
 class Ball {
     constructor() {
-        this.x = ballX;
-        this.y = ballY;
+        this.x = canvas.width / 2;
+        this.y = canvas.height / 2;
         this.r = ballRadius;
         this.velX = ballVelX;
         this.velY = ballVelY;
@@ -14,30 +14,36 @@ class Ball {
     }
 
     move() {
-        this.x += ballVelX;
-        this.y += ballVelY;
+        this.x += this.velX;
+        this.y += this.velY;
     }
 
     checkCollision() {
-     // Ball with bottom
-    if(this.y >= canvas.height - 20){
-        if(this.x >= paddleX && this.x <= (paddleX + paddleWidth)){
-            if(ballVelY > 0)
-            ballVelY = -ballVelY;
+        // Ball with paddle
+        var xTemp = this.x - paddle.x;
+        if (this.y >= canvas.height - (ball.r + paddle.height) && this.y <= canvas.height + 2) {
+            if (this.x >= paddle.x && this.x <= (paddle.x + paddle.width)) {
+                this.velY = 4;
+                this.velX = 3 * (xTemp - 50) / 25.0;
+                this.velY = -this.velY;
+            }
         }
-    }    
-    // Ball with top
-    if(this.y < 10){
-        if(ballVelY < 0)
-        ballVelY = -ballVelY;
+        // Ball with top
+        if (this.y < ball.r) {
+            if (this.velY < 0)
+                this.velY = -this.velY;
         }
 
-    // Ball with right
-    if(this.x >= 590 && ballVelX > 0)
-        ballVelX = -ballVelX;
-    
-    // Ball with left
-    if(this.x <= 10 && ballVelX < 0)
-        ballVelX = -ballVelX;
+        // Ball with right
+        if (this.x >= canvas.width - ball.r && this.velX > 0)
+            this.velX = -this.velX;
+
+        // Ball with left
+        if (this.x <= ball.r && this.velX < 0)
+            this.velX = -this.velX;
+
+        // Ball moving off the btttom of screen
+        if (this.y - this.r - 10 > canvas.height)    // Extra Margin for Error
+            showEndScreen();
     }
 }
