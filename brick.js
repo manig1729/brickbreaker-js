@@ -10,7 +10,8 @@ class Brick {
     draw() {
         hollowRect(this.x, this.y, this.width, this.height, 'red', 2);
     }
-
+    
+    // function that checks if the ball is colliding
     checkBallCollision() {
         if (this.isThere) {
             if (ball.x >= this.x && ball.x <= (this.x + this.width)) {
